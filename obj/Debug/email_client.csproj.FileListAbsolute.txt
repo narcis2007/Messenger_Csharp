@@ -1,0 +1,6 @@
+c:\users\narcis2007\documents\visual studio 2015\Projects\email_client\email_client\bin\Debug\email_client.exe.config
+c:\users\narcis2007\documents\visual studio 2015\Projects\email_client\email_client\bin\Debug\email_client.exe
+c:\users\narcis2007\documents\visual studio 2015\Projects\email_client\email_client\bin\Debug\email_client.pdb
+c:\users\narcis2007\documents\visual studio 2015\Projects\email_client\email_client\obj\Debug\email_client.csprojResolveAssemblyReference.cache
+c:\users\narcis2007\documents\visual studio 2015\Projects\email_client\email_client\obj\Debug\email_client.exe
+c:\users\narcis2007\documents\visual studio 2015\Projects\email_client\email_client\obj\Debug\email_client.pdb

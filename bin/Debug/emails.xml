@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Users>
+  <User id="1">
+    <status>UNSENT</status>
+    <title>dfgdfgd</title>
+    <content>rtyrt</content>
+    <username>admin</username>
+    <receiver></receiver>
+  </User>
+  <User id="2">
+    <status>UNSENT</status>
+    <title>dhg</title>
+    <content>fgh</content>
+    <username>admin</username>
+    <receiver></receiver>
+  </User>
+  <User id="3">
+    <status>UNSENT</status>
+    <title>1</title>
+    <content>q</content>
+    <username>admin</username>
+    <receiver></receiver>
+  </User>
+  <User id="4">
+    <status>UNSENT</status>
+    <title>2</title>
+    <content>w</content>
+    <username>admin</username>
+    <receiver></receiver>
+  </User>
+  <User id="5">
+    <status>UNSENT</status>
+    <title>3</title>
+    <content>e</content>
+    <username>admin</username>
+    <receiver></receiver>
+  </User>
+  <User id="6">
+    <status>UNSENT</status>
+    <title>4</title>
+    <content>r</content>
+    <username>admin</username>
+    <receiver></receiver>
+  </User>
+  <User id="7">
+    <status>UNSENT</status>
+    <title>5</title>
+    <content>t</content>
+    <username>admin</username>
+    <receiver></receiver>
+  </User>
+  <User id="8">
+    <status>UNSENT</status>
+    <title>33</title>
+    <content>ee</content>
+    <username>admin</username>
+    <receiver></receiver>
+  </User>
+  <User id="9">
+    <status>UNSENT</status>
+    <title>12345</title>
+    <content>qwerty</content>
+    <username>admin</username>
+    <receiver></receiver>
+  </User>
+  <User id="10">
+    <status>UNSENT</status>
+    <title>1234</title>
+    <content>qwertt</content>
+    <username>admin</username>
+    <receiver />
+  </User>
+</Users>
