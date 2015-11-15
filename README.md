@@ -1,6 +1,6 @@
 # Messenger_Csharp
 
-Messanger Ported on C#/.NET
+Messanger_java Ported on C#/.NET
       
 I am still working on this
                             
