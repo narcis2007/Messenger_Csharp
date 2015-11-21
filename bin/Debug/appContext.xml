@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<component id="consoleUi" type="ConsoleUi">
+		<property name="Service" ref="service"/>
+	</component>
+
+	<component id="service" type="Service">
+		<property name="EmailRepository" ref="emailRepository"/>
+		<property name="UserRepository" ref="userRepository"/>
+	</component>
+
+	<component id="emailRepository" type="EmailRepository">
+		<property name="Validator" ref="emailValidator"/>
+	</component>
+	<component id="emailValidator" type="EmailValidator" />
+	
+	<component id="userRepository" type="UserRepository">
+		<property name="Validator" ref="userValidator"/>
+	</component>
+	<component id="userValidator" type="UserValidator" />
+  
+  <!--
+  <component id="keepUi" type="KeepUI">
+    <property name="KeepManager" ref="keepManager"/>
+  </component>
+  <component id="keepManager" type="KeepManager">
+    <property name="UserRepository" ref="userRepo"/>
+    <property name="NoteRepository" ref="noteRepo"/>
+  </component>
+  <component id="userRepo" type="FileUserRepository" assembly ="Keep.FileRepository"/>
+  <component id="noteRepo" type="FileNoteRepository" assembly ="Keep.FileRepository"/>
+-->
+</root>
