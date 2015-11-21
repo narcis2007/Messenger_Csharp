@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using email_client.data.domain;
 
@@ -14,7 +14,19 @@ namespace email_client.data.repository
 
         protected AbstractPagingAndSortingRepository(Validator<E> validator,string filename) : base(validator,filename)
         {
+            lock (monitor)
+            {
+                Monitor.Wait(monitor);
+            }
             pages=generatePages().ToList();
+        }
+        protected AbstractPagingAndSortingRepository(string filename) : base(filename)
+        {
+            lock (monitor)
+            {
+                Monitor.Wait(monitor);
+            }
+            pages = generatePages().ToList();
         }
 
         public ICollection<Page<E>> generatePages()
@@ -32,8 +44,6 @@ namespace email_client.data.repository
                 pages[count / maxSize].addElement(e);
                 count++;
 
-
-                
             }
             return pages;
         }

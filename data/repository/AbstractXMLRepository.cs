@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using email_client.data.domain;
 using System.Xml;
@@ -13,32 +14,42 @@ namespace email_client.data.repository
     abstract public class AbstractXMLRepository<E, ID> : AbstractCRUDRepository<E, ID>, IFileRepository<E, ID>
     {
         private string filename;
-
+        
         protected AbstractXMLRepository(Validator<E> validator,string filename) : base(validator)
         {
             this.filename = filename;
-            loadMemory();
+            Task.Factory.StartNew(()=>loadMemory());
+        }
+        protected AbstractXMLRepository(string filename) : base()
+        {
+            this.filename = filename;
+            Task.Factory.StartNew(() => loadMemory());
         }
 
         public void loadMemory()
         {
-            if (!File.Exists(filename))
-            {
-                XElement root = new XElement(getEntityName() + 's');
-                root.Save(filename);
-            }
-            XElement allData = XElement.Load(filename);
-            if (allData != null)
-            {
-                IEnumerable<XElement> xElements = allData.Descendants(getEntityName());
-                foreach (XElement xElement in xElements)
+            
+                if (!File.Exists(filename))
                 {
-                    
-                    E e=saveXElement(xElement);
-                    base.save(e);
+                    XElement root = new XElement(getEntityName() + 's');
+                    root.Save(filename);
                 }
-                    
-            }
+                XElement allData = XElement.Load(filename);
+                if (allData != null)
+                {
+                    IEnumerable<XElement> xElements = allData.Descendants(getEntityName());
+                    foreach (XElement xElement in xElements)
+                    {
+
+                        E e = saveXElement(xElement);
+                        base.save(e);
+                    }
+
+                }
+                lock (monitor)
+                {
+                    Monitor.PulseAll(monitor);
+                }
         }
 
         internal abstract E saveXElement(XElement xElement);
@@ -50,14 +61,20 @@ namespace email_client.data.repository
 
         public void updateFile()
         {
-            XElement root = new XElement(getEntityName()+'s');
-            // Add child nodes
-            foreach (E e in elements)
+            lock (monitor)
             {
-                root.Add(child(e));
-                
+                Task.Factory.StartNew(() =>
+                {
+                    XElement root = new XElement(getEntityName() + 's');
+                        // Add child nodes
+                        foreach (E e in elements)
+                    {
+                        root.Add(child(e));
+
+                    }
+                    root.Save(filename);
+                });
             }
-            root.Save(filename);
         }
 
         internal abstract XElement child(E e);
